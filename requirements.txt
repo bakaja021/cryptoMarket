@@ -1,0 +1,16 @@
+autobahn==18.8.1
+btfxwss==1.2.1
+certifi==2018.8.13
+chardet==3.0.4
+copra==1.0.7
+idna==2.7
+krakenex==2.1.0
+mysql-connector-python==8.0.12
+protobuf==3.6.1
+Pysher==0.5.1
+python-dotenv==0.9.1
+requests==2.19.1
+six==1.11.0
+txaio==18.7.1
+urllib3==1.23
+websocket-client==0.48.0

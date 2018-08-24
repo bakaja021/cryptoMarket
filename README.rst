@@ -1,0 +1,26 @@
+Crypto Market - Python 3
+========================
+
+
+Basic Commands
+--------------
+
+Setting Up Your Environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* To **clone project** use `git <https://git-scm.com/>`_::
+
+    $ git clone https://github.com/bakaja021/crypto_market.git
+
+* install **project dependencies**::
+
+    $ cd crypto_market
+    $ pip install -r requirements.txt
+
+Run Scrypt
+^^^^^^^^^^
+
+* To **configure** bot from **root** of project::
+
+    $ python collect_data.py
+

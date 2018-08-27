@@ -1,5 +1,7 @@
 import os
 import logging
+from multiprocessing import Process
+
 from dotenv import load_dotenv
 
 load_dotenv(verbose=True)
@@ -9,7 +11,7 @@ console = logging.StreamHandler()
 log.addHandler(console)
 
 config = {
-    'user': os.getenv("USER"),
+    'user': os.getenv("USER_DB"),
     'password': os.getenv("PASSWORD"),
     'host': os.getenv("HOST"),
     'port': os.getenv("PORT"),
@@ -29,3 +31,19 @@ def write_db(cursor, cnx, **kwargs):
     val = (kwargs['exchange'], kwargs['pair'], kwargs['trade_id'], kwargs['unix_time'], kwargs['price'], kwargs['size_volume'], kwargs['created_at'], kwargs['vwap'])
     cursor.execute(sql, val)
     cnx.commit()
+
+
+def run_in_parallel(*fns):
+    proc = []
+    for fn in fns:
+        p = Process(target=fn)
+        p.start()
+        proc.append(p)
+    try:
+        for p in proc:
+            p.join()
+    except KeyboardInterrupt:
+        print('\nKeyboard received CTRL-C... Bye!!!')
+        for p in proc:
+            p.terminate()
+            p.join()

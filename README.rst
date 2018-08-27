@@ -20,7 +20,7 @@ Setting Up Your Environment
 Run Scrypt
 ^^^^^^^^^^
 
-* To **configure** bot from **root** of project::
+* To start collecting data run::
 
     $ python collect_data.py
 

@@ -21,17 +21,22 @@ class Coinbase(Client):
 
     def on_message(self, message):
         try:
-            log_function('Coinbase received! :)')
-            exchange = 'Coinbase'
-            pair = message['product_id'].replace('-', '')
-            trade_id = message['trade_id']
-            unix_time = int(time.mktime(datetime.strptime(message['time'], "%Y-%m-%dT%H:%M:%S.%fZ").timetuple()))
-            price = float(message['price'])
-            size_volume = float(message['last_size']) if message['side'] == 'buy' else -float(message['last_size'])
-            created_at = datetime.utcnow()
-            vwap = price * abs(size_volume)
-            write_db(self.cursor, self.cnx, exchange=exchange, pair=pair, trade_id=trade_id, unix_time=unix_time,
-                     price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
-
+            log_function(str(message))
+            if 'product_id' in message and 'trade_id' in message and 'time' in message and 'price' in message and 'side' in message:
+                log_function('Coinbase received! :)')
+                exchange = 'Coinbase'
+                pair = message['product_id'].replace('-', '')
+                trade_id = message['trade_id'] if 'trade_id' in message else "-"
+                unix_time = int(
+                    time.mktime(datetime.strptime(message['time'], "%Y-%m-%dT%H:%M:%S.%fZ").timetuple())) - 25200
+                price = float(message['price'])
+                size_volume = float(message['last_size']) if message['side'] == 'buy' else -float(message['last_size'])
+                created_at = datetime.utcnow()
+                vwap = price * abs(size_volume)
+                write_db(self.cursor, self.cnx, exchange=exchange, pair=pair, trade_id=trade_id, unix_time=unix_time,
+                         price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
+            else:
+                pass
         except AttributeError:
             log_function("Coinbase error! :(")
+            pass

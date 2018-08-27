@@ -1,6 +1,6 @@
 import time
 import asyncio
-from multiprocessing import Process
+
 import websocket
 from copra.websocket import Channel
 
@@ -10,12 +10,12 @@ from markets.bitstamp import BitstampClient
 from markets.coinbase import Coinbase
 from markets.gemini import Gemini
 from markets.hitbtc import Hitbtc
-from markets.houbi import Huobi    # DON'T WORK
+from markets.houbi import Huobi
 from markets.kraken import Kraken
 from markets.kucoin import Kucoin
 from markets.poloniex import Poloniex
 
-from helpers.utils import config
+from helpers.utils import config, run_in_parallel
 
 
 def binance():
@@ -59,7 +59,7 @@ def bitstamp_ltc():
 
 def coinbase():
     loop = asyncio.get_event_loop()
-    ws = Coinbase(loop, Channel('ticker', ['BTC-USD', 'ETH-USD', 'LTC-USD']), **config)
+    ws = Coinbase(loop, Channel('ticker', ['BTC-USD', 'ETH-USD', 'LTC-USD', 'ETC-USD']), **config)
     try:
         loop.run_forever()
     except KeyboardInterrupt:
@@ -253,22 +253,6 @@ def poloniex_dash():
     while True:
         ws.run_forever()
         time.sleep(1)
-
-
-def run_in_parallel(*fns):
-    proc = []
-    for fn in fns:
-        p = Process(target=fn)
-        p.start()
-        proc.append(p)
-    try:
-        for p in proc:
-            p.join()
-    except KeyboardInterrupt:
-        print('\nKeyboard received CTRL-C... Bye!!!')
-        for p in proc:
-            p.terminate()
-            p.join()
 
 
 def main():

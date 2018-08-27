@@ -30,16 +30,19 @@ class Huobi:
         try:
             response = ast.literal_eval(gzip.decompress(message).decode('utf-8'))
             log_function('Houbi received! :)')
-            trade_id = response["tick"]["data"][0]["id"]
-            unix_time = int(response["tick"]["data"][0]["ts"] / 1000)
-            price = float(response["tick"]["data"][0]["price"])
-            size_volume = float(response["tick"]["data"][0]["amount"]) if response['tick']['data'][0][
-                                                                              'direction'] == 'buy' else -float(
-                response["tick"]["data"][0]["amount"])
-            created_at = datetime.utcnow()
-            vwap = price * abs(size_volume)
-            write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair, trade_id=trade_id,
-                     unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
+            if 'tick' in response:
+                log_function(response)
+                for transaction in response["tick"]["data"]:
+                    trade_id = transaction["id"]
+                    unix_time = int(transaction["ts"] / 1000)
+                    price = float(transaction["price"])
+                    size_volume = float(transaction["amount"]) if transaction['direction'] == 'buy' else -float(
+                        transaction["amount"])
+                    created_at = datetime.utcnow()
+                    vwap = price * abs(size_volume)
+                    write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair, trade_id=trade_id,
+                             unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                             vwap=vwap)
 
         except AttributeError:
             log_function("Huobi error")

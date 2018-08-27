@@ -18,20 +18,25 @@ class Gemini:
         self.cnx = mysql.connector.connect(**kwargs)
         self.cursor = self.cnx.cursor()
 
+    def on_error(self, ws, error):
+        log_function("Gemini error, real error! :(")
+
     def on_message(self, ws, message):
         try:
             response = ast.literal_eval(message)
-            log_function('Gemini received! :)')
-            trade_id = response['eventId']
-            unix_time = int(response['timestamp'])
-            price = float(response['events'][0]['price'])
-            size_volume = float(response['events'][0]['amount']) if response['events'][0][
-                                                                        'makerSide'] == 'ask' else -float(
-                response['events'][0]['amount'])
-            created_at = datetime.utcnow()
-            vwap = price * abs(size_volume)
-            write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair, trade_id=trade_id,
-                     unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
-
+            if 'eventId' in response and 'timestamp' in response and 'events' in response:
+                log_function('Gemini received! :)')
+                trade_id = response['eventId']
+                unix_time = int(response['timestamp'])
+                price = float(response['events'][0]['price'])
+                size_volume = float(response['events'][0]['amount']) if response['events'][0][
+                                                                            'makerSide'] == 'ask' else -float(
+                    response['events'][0]['amount'])
+                created_at = datetime.utcnow()
+                vwap = price * abs(size_volume)
+                write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair, trade_id=trade_id,
+                         unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
+            else:
+                pass
         except AttributeError:
             log_function("Gemini error! :(")

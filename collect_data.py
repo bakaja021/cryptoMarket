@@ -23,9 +23,7 @@ def binance():
     ws = websocket.WebSocketApp(
         "wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/ltcusdt@trade/etcusdt@trade",
         on_message=market.on_message)
-    while True:
-        ws.run_forever()
-        time.sleep(1)
+    ws.run_forever(ping_timeout=5)
 
 
 def bitfinex():
@@ -257,10 +255,17 @@ def poloniex_dash():
 
 def main():
     start = time.time()
-    run_in_parallel(binance, bitfinex, bitstamp_btc, bitstamp_eth, bitstamp_ltc, coinbase, gemini_btc, gemini_eth, hitbtc_btc, hitbtc_eth, hitbtc_etc,
-                    hitbtc_ltc, hitbtc_dash, huobi_btc, huobi_eth, huobi_etc, huobi_ltc, huobi_dash, kraken_btc,
-                    kraken_eth, kraken_etc, kraken_ltc, kraken_dash, kucoin_btc, kucoin_eth, kucoin_etc, kucoin_ltc,
-                    kucoin_dash, poloniex_btc, poloniex_dash, poloniex_etc, poloniex_eth, poloniex_ltc)
+    '''run_in_parallel(binance,
+                    bitfinex,
+                    bitstamp_btc, bitstamp_eth, bitstamp_ltc,
+                    coinbase,
+                    gemini_btc, gemini_eth,
+                    hitbtc_btc, hitbtc_eth, hitbtc_etc, hitbtc_ltc, hitbtc_dash,
+                    huobi_btc, huobi_eth, huobi_etc, huobi_ltc, huobi_dash,
+                    kraken_btc, kraken_eth, kraken_etc, kraken_ltc, kraken_dash,
+                    kucoin_btc, kucoin_eth, kucoin_etc, kucoin_ltc, kucoin_dash,
+                    poloniex_btc, poloniex_dash, poloniex_etc, poloniex_eth, poloniex_ltc)'''
+    run_in_parallel(poloniex_btc)
     stop = time.time()
     print("It took: {total} seconds.".format(total=stop-start))
 

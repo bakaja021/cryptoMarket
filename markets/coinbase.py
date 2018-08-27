@@ -12,6 +12,7 @@ class Coinbase(Client):
     1. BTC-USD
     2. ETH-USD
     3. LTC-USD
+    4. ETC-USD
     """
 
     def __init__(self, loop, channels, **kwargs):

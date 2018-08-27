@@ -26,19 +26,21 @@ class Poloniex:
         try:
             log_function("Poloniex received! :)")
             responses = ast.literal_eval(message)
-            for response in responses[2]:
-                if response[0] == 't':
-                    trade_id = response[1]
-                    unix_time = int(response[5])
-                    price = float(response[3])
-                    size_volume = float(response[4]) if response[2] else -float(response[4])
-                    created_at = datetime.utcnow()
-                    vwap = price * abs(size_volume)
-                    write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair, trade_id=trade_id,
-                             unix_time=unix_time,
-                             price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
-
-        except:
+            if len(responses) > 1:
+                for response in responses[2]:
+                    if response[0] == 't':
+                        trade_id = response[1]
+                        unix_time = int(response[5])
+                        price = float(response[3])
+                        size_volume = float(response[4]) if response[2] else -float(response[4])
+                        created_at = datetime.utcnow()
+                        vwap = price * abs(size_volume)
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair, trade_id=trade_id,
+                                 unix_time=unix_time,
+                                 price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
+            else:
+                pass
+        except AttributeError:
             log_function("Poloniex error! :(")
 
     def on_open(self, ws):

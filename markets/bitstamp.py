@@ -22,7 +22,7 @@ class BitstampClient:
         self.cnx = mysql.connector.connect(**kwargs)
         self.cursor = self.cnx.cursor()
 
-    def init_market(self, *args, **kwargs):
+    def bitstamp_message(self, *args, **kwargs):
         try:
             response = ast.literal_eval(args[0])
             log_function('Bitstamp received! :)')
@@ -40,4 +40,4 @@ class BitstampClient:
 
     def connect(self, data):
         channel = self.pusher.subscribe('live_trades{pair}'.format(pair=CRYPTO_SYMBOLS['bitstamp'][self.pair]))
-        channel.bind('trade', self.init_market)
+        channel.bind('trade', self.bitstamp_message)

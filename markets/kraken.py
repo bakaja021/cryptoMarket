@@ -39,7 +39,6 @@ class Kraken:
                 unix_time_set = (unix_time_s, unix_time_ms)
 
                 self.unix_time_g_kraken = round(float('.'.join(unix_time_set)), 4)
-
                 for response in responses['result'][CRYPTO_SYMBOLS['kraken_sub'][self.pair]]:
                     res_time = round(float(response[2]), 4)
                     if res_time > self.unix_time_kraken:

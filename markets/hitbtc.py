@@ -1,4 +1,3 @@
-import ast
 import json
 import random
 import calendar
@@ -27,9 +26,10 @@ class Hitbtc:
 
     def on_message(self, ws, message):
         try:
-            response = ast.literal_eval(message)
+            response = json.loads(message)
             log_function("Hitbtc received! :)")
-            if response["method"] == "updateTrades":
+            if 'method' in response and 'updateTrades' in response["method"]:
+
                 trade_id = response["params"]["data"][0]["id"]
                 unix_time = int(calendar.timegm(datetime.strptime(response["params"]["data"][0]["timestamp"][:19],
                                                                   "%Y-%m-%dT%X").timetuple()))

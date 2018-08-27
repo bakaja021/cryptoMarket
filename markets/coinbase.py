@@ -21,7 +21,6 @@ class Coinbase(Client):
 
     def on_message(self, message):
         try:
-            log_function(str(message))
             if 'product_id' in message and 'trade_id' in message and 'time' in message and 'price' in message and 'side' in message:
                 log_function('Coinbase received! :)')
                 exchange = 'Coinbase'
@@ -39,4 +38,3 @@ class Coinbase(Client):
                 pass
         except AttributeError:
             log_function("Coinbase error! :(")
-            pass

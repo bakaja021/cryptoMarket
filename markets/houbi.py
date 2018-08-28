@@ -44,7 +44,7 @@ class Huobi:
                              unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
                              vwap=vwap)
 
-        except AttributeError:
+        except Exception as e:
             log_function("Huobi error")
 
     def on_open(self, ws):

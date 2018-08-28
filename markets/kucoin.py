@@ -43,8 +43,6 @@ class Kucoin:
                                      price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
                             unix_ms = response[0]
                     time.sleep(5)
-                else:
-                    pass
 
-            except AttributeError:
+            except Exception as e:
                 log_function("Kucoin error! :(")

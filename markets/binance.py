@@ -34,5 +34,5 @@ class Binance:
             write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair, trade_id=trade_id, unix_time=unix_time,
                      price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
 
-        except AttributeError:
+        except Exception as e:
             log_function('Binance error! :(')

@@ -54,5 +54,6 @@ class Kraken:
                 self.unix_time_kraken = self.unix_time_g_kraken
                 time.sleep(5)
 
-            except AttributeError:
+            except Exception as e:
                 log_function("Kraken error! :(")
+                time.sleep(5)

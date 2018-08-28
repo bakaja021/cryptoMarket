@@ -18,9 +18,6 @@ class Gemini:
         self.cnx = mysql.connector.connect(**kwargs)
         self.cursor = self.cnx.cursor()
 
-    def on_error(self, ws, error):
-        log_function("Gemini error, real error! :(")
-
     def on_message(self, ws, message):
         try:
             response = ast.literal_eval(message)
@@ -36,7 +33,6 @@ class Gemini:
                 vwap = price * abs(size_volume)
                 write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair, trade_id=trade_id,
                          unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
-            else:
-                pass
-        except AttributeError:
+
+        except Exception as e:
             log_function("Gemini error! :(")

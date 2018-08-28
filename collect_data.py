@@ -255,7 +255,7 @@ def poloniex_dash():
 
 def main():
     start = time.time()
-    '''run_in_parallel(binance,
+    run_in_parallel(binance,
                     bitfinex,
                     bitstamp_btc, bitstamp_eth, bitstamp_ltc,
                     coinbase,
@@ -264,8 +264,7 @@ def main():
                     huobi_btc, huobi_eth, huobi_etc, huobi_ltc, huobi_dash,
                     kraken_btc, kraken_eth, kraken_etc, kraken_ltc, kraken_dash,
                     kucoin_btc, kucoin_eth, kucoin_etc, kucoin_ltc, kucoin_dash,
-                    poloniex_btc, poloniex_dash, poloniex_etc, poloniex_eth, poloniex_ltc)'''
-    run_in_parallel(poloniex_btc)
+                    poloniex_btc, poloniex_dash, poloniex_etc, poloniex_eth, poloniex_ltc)
     stop = time.time()
     print("It took: {total} seconds.".format(total=stop-start))
 

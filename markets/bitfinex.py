@@ -77,7 +77,7 @@ class Bitfinex:
                         write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair_btc, trade_id=trade_id,
                                  unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
                                  vwap=vwap)
-                except AttributeError:
+                except Exception as e:
                     pass
 
                 try:
@@ -87,7 +87,7 @@ class Bitfinex:
                         write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair_eth, trade_id=trade_id,
                                  unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
                                  vwap=vwap)
-                except AttributeError:
+                except Exception as e:
                     pass
 
                 try:
@@ -97,7 +97,7 @@ class Bitfinex:
                         write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair_etc, trade_id=trade_id,
                                  unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
                                  vwap=vwap)
-                except AttributeError:
+                except Exception as e:
                     pass
 
                 try:
@@ -107,7 +107,7 @@ class Bitfinex:
                         write_db(self.cursor, self.cnx, exchange=self.exchange, pair=self.pair_ltc, trade_id=trade_id,
                                  unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
                                  vwap=vwap)
-                except AttributeError:
+                except Exception as e:
                     pass
 
                 try:
@@ -118,8 +118,8 @@ class Bitfinex:
                         write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_dsh, trade_id=trade_id,
                                  unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
                                  vwap=vwap)
-                except AttributeError:
+                except Exception as e:
                     pass
 
-            except AttributeError:
+            except Exception as e:
                 log_function("Bitfinex error")

@@ -10,7 +10,7 @@ Setting Up Your Environment
 
 * To **clone project** use `git <https://git-scm.com/>`_::
 
-    $ git clone https://github.com/bakaja021/crypto_market.git
+    $ git clone https://bakaja55@bitbucket.org/vizlore/crypto-market.git
 
 * install **project dependencies**::
 

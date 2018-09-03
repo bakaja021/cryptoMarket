@@ -41,3 +41,6 @@ CRYPTO_SYMBOLS = {
     }
 
 }
+
+SUPPORTED_EXCHANGES = ["Binance", "Bitfinex", "Bitstamp", "Coinbase", "Gemini", "Kraken", "Kucoin", "Poloniex"]
+SUPPORTED_PAIRS = ["BTCUSD", "ETHUSD", "LTCUSD", "ETCUSD", "DASHUSD"]

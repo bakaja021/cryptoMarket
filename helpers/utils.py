@@ -4,6 +4,8 @@ from multiprocessing import Process
 
 from dotenv import load_dotenv
 
+from helpers.symbols import SUPPORTED_EXCHANGES
+
 load_dotenv(verbose=True)
 
 log = logging.getLogger()
@@ -32,6 +34,16 @@ def write_db(cursor, cnx, **kwargs):
     cursor.execute(sql, val)
     cnx.commit()
 
+
+def ohlcvt_write_db(cursor, cnx, current_unix, lower_unix, **kwargs):
+    exchanges_str = str(SUPPORTED_EXCHANGES)[1:-1]
+    sql_select = "select SUM(ABS(size_volume)), MAX(unix_time), MIN(unix_time), MAX(price), MIN(price) from market_coin "
+    sql_where = "where pair='" + self.pair + "' and unix_time < " + str(
+        current_unix) + " and unix_time >= " + str(lower_unix) + " and exchange IN (" + exchanges_str + ")"
+    cursor.execute(sql_select + sql_where)
+    result = cursor.fetchall()
+
+    return result
 
 def run_in_parallel(*fns):
     proc = []

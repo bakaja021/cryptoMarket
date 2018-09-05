@@ -14,6 +14,7 @@ from markets.houbi import Huobi
 from markets.kraken import Kraken
 from markets.kucoin import Kucoin
 from markets.poloniex import Poloniex
+from markets.ohlcvt_calculation import Ohlcvt
 
 from helpers.utils import config, run_in_parallel
 
@@ -253,6 +254,31 @@ def poloniex_dash():
         time.sleep(1)
 
 
+def ohlcvt_btc():
+    ohlcvt = Ohlcvt("BTCUSD", **config)
+    ohlcvt.run()
+
+
+def ohlcvt_etc():
+    ohlcvt = Ohlcvt("ETCUSD", **config)
+    ohlcvt.run()
+
+
+def ohlcvt_ltc():
+    ohlcvt = Ohlcvt("LTCUSD", **config)
+    ohlcvt.run()
+
+
+def ohlcvt_eth():
+    ohlcvt = Ohlcvt("ETHUSD", **config)
+    ohlcvt.run()
+
+
+def ohlcvt_dash():
+    ohlcvt = Ohlcvt("DASHUSD", **config)
+    ohlcvt.run()
+
+
 def main():
     start = time.time()
     run_in_parallel(binance,
@@ -264,7 +290,8 @@ def main():
                     huobi_btc, huobi_eth, huobi_etc, huobi_ltc, huobi_dash,
                     kraken_btc, kraken_eth, kraken_etc, kraken_ltc, kraken_dash,
                     kucoin_btc, kucoin_eth, kucoin_etc, kucoin_ltc, kucoin_dash,
-                    poloniex_btc, poloniex_dash, poloniex_etc, poloniex_eth, poloniex_ltc)
+                    poloniex_btc, poloniex_dash, poloniex_etc, poloniex_eth, poloniex_ltc,
+                    ohlcvt_btc, ohlcvt_etc, ohlcvt_ltc, ohlcvt_dash, ohlcvt_eth)
     stop = time.time()
     print("It took: {total} seconds.".format(total=stop-start))
 

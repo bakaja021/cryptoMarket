@@ -33,7 +33,7 @@ class Kraken:
         while True:
             try:
                 responses = kraken_start.query_public('Trades', {"pair": CRYPTO_SYMBOLS['kraken'][self.pair]})
-                log_function("Kreken received! :)")
+                # log_function("Kreken received! :)")
                 unix_time_s = responses['result']['last'][:10]
                 unix_time_ms = responses['result']['last'][10:]
                 unix_time_set = (unix_time_s, unix_time_ms)
@@ -52,8 +52,9 @@ class Kraken:
                                  price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
 
                 self.unix_time_kraken = self.unix_time_g_kraken
-                time.sleep(5)
+                time.sleep(45)
 
             except Exception as e:
                 log_function("Kraken error! :(")
-                time.sleep(5)
+                log_function(str(e))
+                time.sleep(45)

@@ -69,7 +69,7 @@ class Bitfinex:
 
         while True:
             try:
-                log_function('Bitfinex received! :)')
+                # log_function('Bitfinex received! :)')
                 try:
                     tu_btc = self.ticker_btc.get()
                     if tu_btc[0][0] == "tu":
@@ -123,3 +123,4 @@ class Bitfinex:
 
             except Exception as e:
                 log_function("Bitfinex error")
+                log_function(str(e))

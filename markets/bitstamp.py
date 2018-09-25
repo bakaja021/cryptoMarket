@@ -25,7 +25,7 @@ class BitstampClient:
     def bitstamp_message(self, *args, **kwargs):
         try:
             response = ast.literal_eval(args[0])
-            log_function('Bitstamp received! :)')
+            #log_function('Bitstamp received! :)')
             trade_id = response['id']
             unix_time = int(response['timestamp'])
             price = float(response['price'])
@@ -37,6 +37,7 @@ class BitstampClient:
 
         except Exception as e:
             log_function("Bitstamp error! :(")
+            log_function(str(e))
 
     def connect(self, data):
         channel = self.pusher.subscribe('live_trades{pair}'.format(pair=CRYPTO_SYMBOLS['bitstamp'][self.pair]))

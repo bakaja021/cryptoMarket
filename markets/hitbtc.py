@@ -27,7 +27,7 @@ class Hitbtc:
     def on_message(self, ws, message):
         try:
             response = json.loads(message)
-            log_function("Hitbtc received! :)")
+            # log_function("Hitbtc received! :)")
             if 'method' in response and 'updateTrades' in response["method"]:
 
                 trade_id = response["params"]["data"][0]["id"]
@@ -44,6 +44,7 @@ class Hitbtc:
 
         except Exception as e:
             log_function("Hitbtc error! :(")
+            log_function(str(e))
 
     def on_open(self, ws):
         subscription = {"method": "subscribeTrades", "params": {"symbol": self.pair}, "id": self.sub_id}

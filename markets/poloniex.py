@@ -24,7 +24,7 @@ class Poloniex:
 
     def on_message(self, ws, message):
         try:
-            log_function("Poloniex received! :)")
+            # log_function("Poloniex received! :)")
             responses = ast.literal_eval(message)
             if len(responses) > 1:
                 for response in responses[2]:
@@ -41,6 +41,7 @@ class Poloniex:
 
         except Exception as e:
             log_function("Poloniex error! :(")
+            log_function(str(e))
 
     def on_open(self, ws):
         subscription = {"command": "subscribe", "channel": CRYPTO_SYMBOLS['poloniex'][self.pair]}

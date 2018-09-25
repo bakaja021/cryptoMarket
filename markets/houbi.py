@@ -29,7 +29,7 @@ class Huobi:
     def on_message(self, ws, message):
         try:
             response = ast.literal_eval(gzip.decompress(message).decode('utf-8'))
-            log_function('Houbi received! :)')
+            # log_function('Houbi received! :)')
             if 'tick' in response:
                 log_function(response)
                 for transaction in response["tick"]["data"]:
@@ -45,7 +45,8 @@ class Huobi:
                              vwap=vwap)
 
         except Exception as e:
-            log_function("Huobi error")
+            log_function("Huobi error! :(")
+            log_function(str(e))
 
     def on_open(self, ws):
         subscription = {"sub": "market.{pair}.trade.detail".format(pair=CRYPTO_SYMBOLS['huobi'][self.pair]),

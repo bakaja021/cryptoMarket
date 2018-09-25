@@ -28,7 +28,7 @@ class Kucoin:
         while True:
             try:
                 r = requests.get("{market}{pair}".format(market=self.market, pair=CRYPTO_SYMBOLS['kucoin'][self.pair])).json()
-                log_function("Kucoin received! :)")
+                # log_function("Kucoin received! :)")
                 if 'data' in r:
                     for response in r['data']:
                         if response[0] > unix_ms:
@@ -42,7 +42,8 @@ class Kucoin:
                                      unix_time=unix_time,
                                      price=price, size_volume=size_volume, created_at=created_at, vwap=vwap)
                             unix_ms = response[0]
-                    time.sleep(5)
+                    time.sleep(45)
 
             except Exception as e:
                 log_function("Kucoin error! :(")
+                log_function(str(e))

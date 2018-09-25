@@ -22,7 +22,7 @@ class Gemini:
         try:
             response = ast.literal_eval(message)
             if 'eventId' in response and 'timestamp' in response and 'events' in response:
-                log_function('Gemini received! :)')
+                # log_function('Gemini received! :)')
                 trade_id = response['eventId']
                 unix_time = int(response['timestamp'])
                 price = float(response['events'][0]['price'])
@@ -36,3 +36,4 @@ class Gemini:
 
         except Exception as e:
             log_function("Gemini error! :(")
+            log_function(str(e))

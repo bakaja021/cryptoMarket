@@ -21,7 +21,7 @@ class Binance:
 
     def on_message(self, ws, message):
         try:
-            log_function('Binance received! :)')
+            # log_function('Binance received! :)')
             response = json.loads(message)
             response = response['data']
             pair = str(response['s'])[:-1]
@@ -36,3 +36,4 @@ class Binance:
 
         except Exception as e:
             log_function('Binance error! :(')
+            log_function(str(e))

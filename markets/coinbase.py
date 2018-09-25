@@ -23,7 +23,7 @@ class Coinbase(Client):
     def on_message(self, message):
         try:
             if 'product_id' in message and 'trade_id' in message and 'time' in message and 'price' in message and 'side' in message:
-                log_function('Coinbase received! :)')
+                # log_function('Coinbase received! :)')
                 exchange = 'Coinbase'
                 pair = message['product_id'].replace('-', '')
                 trade_id = message['trade_id'] if 'trade_id' in message else "-"
@@ -38,3 +38,4 @@ class Coinbase(Client):
 
         except Exception as e:
             log_function("Coinbase error! :(")
+            log_function(str(e))

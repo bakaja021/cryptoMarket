@@ -15,6 +15,11 @@ class Kucoin:
     3. LTC-USD
     4. ETC-USD
     5. DASH-USD
+    6. BCH-USD
+    7. EOS-USD
+    8. TRX-USD
+    9. VET-USD
+    10. NEO-USD
     """
     def __init__(self, pair, **kwargs):
         self.exchange = 'Kucoin'

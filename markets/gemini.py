@@ -10,6 +10,7 @@ class Gemini:
     """Gemini pairs (cryptocurrency against usd) that are available are:
     1. BTC-USD
     2. ETH-USD
+    3. ZEC-USD
     """
 
     def __init__(self, pair, **kwargs):

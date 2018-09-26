@@ -4,42 +4,68 @@ CRYPTO_SYMBOLS = {
     'bitstamp': {
         'BTCUSD': '',
         'ETHUSD': '_ethusd',
-        'LTCUSD': '_ltcusd'
+        'LTCUSD': '_ltcusd',
+        'BCHUSD': '_bchusd'
     },
     'huobi': {
         'BTCUSD': 'btcusdt',
         'ETHUSD': 'ethusdt',
         'LTCUSD': 'ltcusdt',
         'ETCUSD': 'etcusdt',
-        'DASHUSD': 'dashusdt'
+        'DASHUSD': 'dashusdt',
+        'BCHUSD': 'bchusdt',
+        'EOSUSD': 'eosusdt',
+        'TRXUSD': 'trxusdt',
+        'VETUSD': 'vetusdt',
+        'IOTAUSD': 'iotausdt',
+        'ZECUSD': 'zecusdt',
+        'NEOUSD': 'neousdt',
+        'ADAUSD': 'adausdt'
     },
     'kraken': {
         'BTCUSD': 'XBTUSD',
         'ETHUSD': 'ETHUSD',
         'LTCUSD': 'LTCUSD',
         'ETCUSD': 'ETCUSD',
-        'DASHUSD': 'DASHUSD'
+        'DASHUSD': 'DASHUSD',
+        'BCHUSD': 'BCHUSD',
+        'EOSUSD': 'EOSUSD',
+        'XMRUSD': 'XMRUSD',
+        'ZECUSD': 'ZECUSD'
     },
     'kraken_sub': {
         'BTCUSD': 'XXBTZUSD',
         'ETHUSD': 'XETHZUSD',
         'LTCUSD': 'XLTCZUSD',
         'ETCUSD': 'XETCZUSD',
-        'DASHUSD': 'DASHUSD'
+        'DASHUSD': 'DASHUSD',
+        'BCHUSD': 'BCHUSD',
+        'EOSUSD': 'EOSUSD',
+        'XMRUSD': 'XXMRZUSD',
+        'ZECUSD': 'XZECZUSD'
     },
     'kucoin': {
         'BTCUSD': 'BTC-USDT',
         'ETHUSD': 'ETH-USDT',
         'LTCUSD': 'LTC-USDT',
         'ETCUSD': 'ETC-USDT',
-        'DASHUSD': 'DASH-USDT'
+        'DASHUSD': 'DASH-USDT',
+        'BCHUSD': 'BCH-USDT',
+        'EOSUSD': 'EOS-USDT',
+        'TRXUSD': 'TRX-USDT',
+        'VETUSD': 'VET-USDT',
+        'NEOUSD': 'NEO-USDT',
     },
     'poloniex': {
         'BTCUSD': 'USDT_BTC',
         'ETHUSD': 'USDT_ETH',
         'LTCUSD': 'USDT_LTC',
         'ETCUSD': 'USDT_ETC',
-        'DASHUSD': 'USDT_DASH'
+        'DASHUSD': 'USDT_DASH',
+        'BCHUSD': 'USDT_BCH',
+        'EOSUSD': 'USDT_EOS',
+        'XMRUSD': 'USDT_XMR',
+        'ZECUSD': 'USDT_ZEC'
     }
 
 }

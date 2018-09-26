@@ -14,6 +14,7 @@ class BitstampClient:
     1. BTC-USD
     2. ETH-USD
     3. LTC-USD
+    4. BCH-USD
     """
     def __init__(self, pair, **kwargs):
         self.pusher = pysher.Pusher(os.getenv("BITSTAMP_KEY"))

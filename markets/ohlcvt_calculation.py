@@ -14,6 +14,15 @@ class Ohlcvt:
     3. LTC-USD
     4. ETC-USD
     5. DASH-USD
+    6. BCH-USD
+    7. BTG-USD
+    8. EOS-USD
+    9. TRX-USD
+    10. XMR-USD
+    11. IOTA-USD
+    12. ZEC-USD
+    13. NEO-USD
+    14. ADA-USD
     """
 
     def __init__(self, pair, **kwargs):

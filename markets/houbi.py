@@ -17,6 +17,14 @@ class Huobi:
     3. LTC-USD
     4. ETC-USD
     5. DASH-USD
+    6. BCH-USD
+    7. EOS-USD
+    8. TRX-USD
+    9. VET-USD
+    10. IOTA-USD
+    11. ZEC-USD
+    12. NEO-USD
+    13. ADA-USD
     """
 
     def __init__(self, pair, **kwargs):
@@ -31,7 +39,6 @@ class Huobi:
             response = ast.literal_eval(gzip.decompress(message).decode('utf-8'))
             # log_function('Houbi received! :)')
             if 'tick' in response:
-                log_function(response)
                 for transaction in response["tick"]["data"]:
                     trade_id = transaction["id"]
                     unix_time = int(transaction["ts"] / 1000)

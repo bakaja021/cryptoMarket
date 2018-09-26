@@ -23,6 +23,15 @@ class Bitfinex:
         self.pair_etc = 'ETCUSD'
         self.pair_ltc = 'LTCUSD'
         self.pair_dsh = 'DSHUSD'
+        self.pair_bch = 'BCHUSD'
+        self.pair_btg = 'BTGUSD'
+        self.pair_eos = 'EOSUSD'
+        self.pair_trx = 'TRXUSD'
+        self.pair_xmr = 'XMRUSD'
+        self.pair_vet = 'VETUSD'
+        self.pair_iot = 'IOTUSD'
+        self.pair_zec = 'ZECUSD'
+        self.pair_neo = 'NEOUSD'
         self.cnx = mysql.connector.connect(**kwargs)
         self.cursor = self.cnx.cursor()
 
@@ -37,6 +46,15 @@ class Bitfinex:
         wss.subscribe_to_trades(self.pair_etc)
         wss.subscribe_to_trades(self.pair_ltc)
         wss.subscribe_to_trades(self.pair_dsh)
+        wss.subscribe_to_trades(self.pair_bch)
+        wss.subscribe_to_trades(self.pair_btg)
+        wss.subscribe_to_trades(self.pair_eos)
+        wss.subscribe_to_trades(self.pair_trx)
+        wss.subscribe_to_trades(self.pair_xmr)
+        wss.subscribe_to_trades(self.pair_vet)
+        wss.subscribe_to_trades(self.pair_iot)
+        wss.subscribe_to_trades(self.pair_zec)
+        wss.subscribe_to_trades(self.pair_neo)
 
         t = time.time()
         while time.time() - t < 10:
@@ -47,6 +65,15 @@ class Bitfinex:
         self.ticker_etc = wss.trades(self.pair_etc)
         self.ticker_ltc = wss.trades(self.pair_ltc)
         self.ticker_dsh = wss.trades(self.pair_dsh)
+        self.ticker_bch = wss.trades(self.pair_bch)
+        self.ticker_btg = wss.trades(self.pair_btg)
+        self.ticker_eos = wss.trades(self.pair_eos)
+        self.ticker_trx = wss.trades(self.pair_trx)
+        self.ticker_xmr = wss.trades(self.pair_xmr)
+        self.ticker_vet = wss.trades(self.pair_vet)
+        self.ticker_iot = wss.trades(self.pair_iot)
+        self.ticker_zec = wss.trades(self.pair_zec)
+        self.ticker_neo = wss.trades(self.pair_neo)
 
     @staticmethod
     def _extract_data(tu):
@@ -116,6 +143,105 @@ class Bitfinex:
                         trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_dsh)
                         pair_dsh = 'DASHUSD'
                         write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_dsh, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_bch = self.ticker_bch.get()
+                    if tu_bch[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_bch)
+                        pair_bch = 'BCHUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_bch, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_btg = self.ticker_btg.get()
+                    if tu_btg[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_btg)
+                        pair_btg = 'BTGUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_btg, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_eos = self.ticker_eos.get()
+                    if tu_eos[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_eos)
+                        pair_eos = 'EOSUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_eos, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_trx = self.ticker_trx.get()
+                    if tu_trx[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_trx)
+                        pair_trx = 'TRXUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_trx, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_xmr = self.ticker_xmr.get()
+                    if tu_xmr[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_xmr)
+                        pair_xmr = 'XMRUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_xmr, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_vet = self.ticker_vet.get()
+                    if tu_vet[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_vet)
+                        pair_vet = 'VETUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_vet, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_iot = self.ticker_iot.get()
+                    if tu_iot[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_iot)
+                        pair_iot = 'IOTAUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_iot, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_zec = self.ticker_zec.get()
+                    if tu_zec[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_zec)
+                        pair_zec = 'ZECUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_zec, trade_id=trade_id,
+                                 unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
+                                 vwap=vwap)
+                except Exception as e:
+                    pass
+
+                try:
+                    tu_neo = self.ticker_neo.get()
+                    if tu_neo[0][0] == "tu":
+                        trade_id, unix_time, price, size_volume, created_at, vwap = self._extract_data(tu_neo)
+                        pair_neo = 'NEOUSD'
+                        write_db(self.cursor, self.cnx, exchange=self.exchange, pair=pair_neo, trade_id=trade_id,
                                  unix_time=unix_time, price=price, size_volume=size_volume, created_at=created_at,
                                  vwap=vwap)
                 except Exception as e:

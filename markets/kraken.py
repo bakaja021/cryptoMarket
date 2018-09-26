@@ -15,6 +15,10 @@ class Kraken:
     3. LTC-USD
     4. ETC-USD
     5. DASH-USD
+    6. BCH-USD
+    7. EOS-USD
+    8. XMR-USD
+    9. ZEC-USD
     """
     def __init__(self, pair, **kwargs):
         self.exchange = 'Kraken'

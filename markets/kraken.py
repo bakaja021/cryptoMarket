@@ -21,6 +21,7 @@ class Kraken:
     8. XMR-USD
     9. ZEC-USD
     10. ADA-USD
+    11. NEO-USD
     """
     def __init__(self, pair, **kwargs):
         self.exchange = 'Kraken'

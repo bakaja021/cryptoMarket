@@ -12,9 +12,18 @@ class Bitfinex:
     """Bitfinex pairs (cryptocurrency against usd) that are available are:
     1. BTC-USD
     2. ETH-USD
-    3. LTC-USD
-    4. ETC-USD
+    3. ETC-USD
+    4. LTC-USD
     5. DASH-USD
+    6. BCH-USD
+    7. BTG-USD
+    8. EOS-USD
+    9. TRX-USD
+    10. XMR-USD
+    11. VET-USD
+    12. IOTA-USD
+    13. ZEC-USD
+    14. NEO-USD
     """
 
     def __init__(self, **kwargs):

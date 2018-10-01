@@ -21,6 +21,7 @@ class Kucoin:
     8. TRX-USD
     9. VET-USD
     10. NEO-USD
+    11. ADA-USD
     """
     def __init__(self, pair, **kwargs):
         self.exchange = 'Kucoin'

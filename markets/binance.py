@@ -11,8 +11,16 @@ class Binance:
     """Binance pairs (cryptocurrency against usd) that are available are:
     1. BTC-USD
     2. ETH-USD
-    3. LTC-USD
-    4. ETC-USD
+    3. ETC-USD
+    4. LTC-USD
+    5. BCH-USD
+    6. EOS-USD
+    7. TRX-USD
+    8. VET-USD
+    9. IOTA-USD
+    10. TUSD-USD
+    11. NEO-USD
+    12. ADA-USD
     """
 
     def __init__(self, **kwargs):

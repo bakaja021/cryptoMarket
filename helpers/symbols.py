@@ -23,6 +23,7 @@ CRYPTO_SYMBOLS = {
         'ADAUSD': 'adausdt'
     },
     'kraken': {
+        'ADAUSD': 'ADAUSD',
         'BTCUSD': 'XBTUSD',
         'ETHUSD': 'ETHUSD',
         'LTCUSD': 'LTCUSD',
@@ -31,9 +32,11 @@ CRYPTO_SYMBOLS = {
         'BCHUSD': 'BCHUSD',
         'EOSUSD': 'EOSUSD',
         'XMRUSD': 'XMRUSD',
-        'ZECUSD': 'ZECUSD'
+        'ZECUSD': 'ZECUSD',
+        'QTUMUSD': 'QTUMUSD'
     },
     'kraken_sub': {
+        'ADAUSD': 'ADAUSD',
         'BTCUSD': 'XXBTZUSD',
         'ETHUSD': 'XETHZUSD',
         'LTCUSD': 'XLTCZUSD',
@@ -42,7 +45,8 @@ CRYPTO_SYMBOLS = {
         'BCHUSD': 'BCHUSD',
         'EOSUSD': 'EOSUSD',
         'XMRUSD': 'XXMRZUSD',
-        'ZECUSD': 'XZECZUSD'
+        'ZECUSD': 'XZECZUSD',
+        'QTUMUSD': 'QTUMUSD'
     },
     'kucoin': {
         'BTCUSD': 'BTC-USDT',

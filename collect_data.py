@@ -317,6 +317,16 @@ def huobi_ada():
         time.sleep(1)
 
 
+def kraken_ada():
+    market = Kraken('ADAUSD', **config)
+    market.run()
+
+
+def kraken_qtum():
+    market = Kraken('QTUMUSD', **config)
+    market.run()
+
+
 def kraken_btc():
     market = Kraken('BTCUSD', **config)
     market.run()
@@ -578,7 +588,7 @@ def main():
                     gemini_btc, gemini_eth, gemini_zec,
                     hitbtc_btc, hitbtc_eth, hitbtc_etc, hitbtc_ltc, hitbtc_dash, hitbtc_bch, hitbtc_btg, hitbtc_eos, hitbtc_trx, hitbtc_xmr, hitbtc_iota, hitbtc_zec, hitbtc_neo, hitbtc_ada,
                     huobi_btc, huobi_eth, huobi_etc, huobi_ltc, huobi_dash, huobi_bch, huobi_eos, huobi_trx, huobi_vet, huobi_iota, huobi_zec, huobi_neo, huobi_ada,
-                    kraken_btc, kraken_eth, kraken_etc, kraken_ltc, kraken_dash, kraken_zec, kraken_xmr, kraken_bch, kraken_eos,
+                    kraken_btc, kraken_eth, kraken_etc, kraken_ltc, kraken_dash, kraken_zec, kraken_xmr, kraken_bch, kraken_eos, kraken_ada, kraken_qtum,
                     kucoin_btc, kucoin_eth, kucoin_etc, kucoin_ltc, kucoin_dash, kucoin_bch, kucoin_eos, kucoin_trx, kucoin_vet, kucoin_neo,
                     poloniex_btc, poloniex_dash, poloniex_etc, poloniex_eth, poloniex_ltc, poloniex_bch, poloniex_eos, poloniex_xmr, poloniex_zec,
                     ohlcvt_btc, ohlcvt_etc, ohlcvt_ltc, ohlcvt_dash, ohlcvt_eth, ohlcvt_bch, ohlcvt_btg, ohlcvt_omg, ohlcvt_eos, ohlcvt_trx, ohlcvt_xmr, ohlcvt_vet, ohlcvt_iota, ohlcvt_zec, ohlcvt_tusd, ohlcvt_neo, ohlcvt_ada)

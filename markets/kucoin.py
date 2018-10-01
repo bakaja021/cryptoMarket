@@ -1,3 +1,4 @@
+import gc
 import time
 import requests
 from datetime import datetime
@@ -31,6 +32,7 @@ class Kucoin:
     def run(self):
         unix_ms = 0
         while True:
+            gc.collect()
             try:
                 r = requests.get("{market}{pair}".format(market=self.market, pair=CRYPTO_SYMBOLS['kucoin'][self.pair])).json()
                 # log_function("Kucoin received! :)")
@@ -50,5 +52,6 @@ class Kucoin:
                     time.sleep(45)
 
             except Exception as e:
+                self.cnx.reconnect(attempts=1, delay=0)
                 log_function("Kucoin error! :(")
                 log_function(str(e))

@@ -1,6 +1,6 @@
+import gc
 import mysql.connector
 import time
-import threading
 from datetime import datetime
 
 from helpers.utils import log_function, read_db_result_null, write_db_result, read_db_result_not_null
@@ -32,6 +32,7 @@ class Ohlcvt:
 
     def run(self):
         while True:
+            gc.collect()
             current_unix = int(time.time())
 
             while current_unix % 60 > 0:

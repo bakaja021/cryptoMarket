@@ -1,3 +1,4 @@
+import gc
 import time
 from datetime import datetime
 
@@ -23,6 +24,7 @@ class Coinbase(Client):
 
     def on_message(self, message):
         try:
+            gc.collect()
             if 'product_id' in message and 'trade_id' in message and 'time' in message and 'price' in message and 'side' in message:
                 # log_function('Coinbase received! :)')
                 exchange = 'Coinbase'

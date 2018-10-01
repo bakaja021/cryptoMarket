@@ -1,3 +1,4 @@
+import gc
 import time
 from datetime import datetime
 
@@ -95,6 +96,7 @@ class Bitfinex:
         """
 
         while True:
+            gc.collect()
             try:
                 # log_function('Bitfinex received! :)')
                 try:

@@ -1,3 +1,4 @@
+import gc
 import os
 import ast
 from datetime import datetime
@@ -25,6 +26,7 @@ class BitstampClient:
 
     def bitstamp_message(self, *args, **kwargs):
         try:
+            gc.collect()
             response = ast.literal_eval(args[0])
             #log_function('Bitstamp received! :)')
             trade_id = response['id']

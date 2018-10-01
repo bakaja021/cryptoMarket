@@ -1,3 +1,4 @@
+import gc
 import ast
 import json
 import gzip
@@ -36,6 +37,7 @@ class Huobi:
 
     def on_message(self, ws, message):
         try:
+            gc.collect()
             response = ast.literal_eval(gzip.decompress(message).decode('utf-8'))
             # log_function('Houbi received! :)')
             if 'tick' in response:

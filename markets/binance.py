@@ -1,3 +1,4 @@
+import gc
 import json
 from datetime import datetime
 
@@ -22,6 +23,7 @@ class Binance:
     def on_message(self, ws, message):
         try:
             # log_function('Binance received! :)')
+            gc.collect()
             response = json.loads(message)
             response = response['data']
             pair = "BCHUSD" if str(response['s'])[:-1] == "BCCUSD" else str(response['s'])[:-1]

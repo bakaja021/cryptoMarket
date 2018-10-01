@@ -1,3 +1,4 @@
+import gc
 import time
 from datetime import datetime
 
@@ -19,6 +20,7 @@ class Kraken:
     7. EOS-USD
     8. XMR-USD
     9. ZEC-USD
+    10. ADA-USD
     """
     def __init__(self, pair, **kwargs):
         self.exchange = 'Kraken'
@@ -35,6 +37,7 @@ class Kraken:
         trade_id = '-'
         kraken_start = krakenex.API()
         while True:
+            gc.collect()
             try:
                 responses = kraken_start.query_public('Trades', {"pair": CRYPTO_SYMBOLS['kraken'][self.pair]})
                 # log_function("Kreken received! :)")

@@ -1,3 +1,4 @@
+import gc
 import ast
 import json
 from datetime import datetime
@@ -29,6 +30,7 @@ class Poloniex:
     def on_message(self, ws, message):
         try:
             # log_function("Poloniex received! :)")
+            gc.collect()
             responses = ast.literal_eval(message)
             if len(responses) > 1:
                 for response in responses[2]:

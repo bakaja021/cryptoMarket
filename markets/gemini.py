@@ -1,3 +1,4 @@
+import gc
 import ast
 from datetime import datetime
 
@@ -21,6 +22,7 @@ class Gemini:
 
     def on_message(self, ws, message):
         try:
+            gc.collect()
             response = ast.literal_eval(message)
             if 'eventId' in response and 'timestamp' in response and 'events' in response:
                 # log_function('Gemini received! :)')

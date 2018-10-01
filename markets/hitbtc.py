@@ -1,3 +1,4 @@
+import gc
 import json
 import random
 import calendar
@@ -35,6 +36,7 @@ class Hitbtc:
 
     def on_message(self, ws, message):
         try:
+            gc.collect()
             response = json.loads(message)
             # log_function("Hitbtc received! :)")
             if 'method' in response and 'updateTrades' in response["method"]:

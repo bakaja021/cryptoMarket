@@ -22,7 +22,7 @@ from helpers.utils import config, run_in_parallel
 def binance():
     market = Binance(**config)
     ws = websocket.WebSocketApp(
-        "wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/ltcusdt@trade/etcusdt@trade/bccusdt@trade/eosusdt@trade/trxusdt@trade/vetusdt@trade/iotausdt@trade/tusdusdt@trade/neousdt@trade/adausdt@trade/",
+        "wss://stream.binance.com:9443/stream?streams=bccusdt@trade/btcusdt@trade/",
         on_message=market.on_message)
     ws.run_forever(ping_timeout=5)
 
@@ -571,7 +571,8 @@ def ohlcvt_neo():
 
 def ohlcvt_ada():
     ohlcvt = Ohlcvt("ADAUSD", **config)
-    ohlcvt.run()
+    while True:
+        ohlcvt.run()
 
 
 def main():

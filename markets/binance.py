@@ -30,11 +30,13 @@ class Binance:
 
     def on_message(self, ws, message):
         try:
-            # log_function('Binance received! :)')
             gc.collect()
+            # log_function('Binance received! :)')
             response = json.loads(message)
             response = response['data']
             pair = "BCHUSD" if str(response['s'])[:-1] == "BCCUSD" else str(response['s'])[:-1]
+            if pair == "BCCUSD":
+                pair = "BCHUSD"
             trade_id = response['t']
             unix_time = int(response['T'] / 1000)
             price = float(response['p'])

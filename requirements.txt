@@ -1,5 +1,5 @@
 asyncio==3.4.3
-autobahn==18.8.1
+autobahn==20.12.3
 btfxwss==1.2.1
 certifi==2018.8.13
 chardet==3.0.4

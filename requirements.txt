@@ -6,7 +6,7 @@ chardet==3.0.4
 copra==1.0.7
 idna==2.7
 krakenex==2.1.0
-mysql-connector-python==8.0.12
+mysql-connector-python==8.0.14
 protobuf==3.6.1
 Pysher==0.5.1
 python-dotenv==0.9.1

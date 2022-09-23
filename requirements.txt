@@ -7,7 +7,7 @@ copra==1.0.7
 idna==2.7
 krakenex==2.1.0
 mysql-connector-python==8.0.12
-protobuf==3.6.1
+protobuf==3.18.3
 Pysher==0.5.1
 python-dotenv==0.9.1
 requests==2.19.1

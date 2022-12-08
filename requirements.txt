@@ -1,7 +1,7 @@
 asyncio==3.4.3
 autobahn==18.8.1
 btfxwss==1.2.1
-certifi==2018.8.13
+certifi==2022.12.7
 chardet==3.0.4
 copra==1.0.7
 idna==2.7
